@@ -108,7 +108,10 @@
     ("Katakana Phonetic Extensions" "Y" nil nil nil "X" "X" nil nil)
     ("Enclosed CJK Letters and Months" "Y" nil nil nil "X" "X" nil nil)
     ("CJK Compatibility" "Y" nil nil nil "X" "X" nil nil)
-    ("CJK Unified Ideographs Extension A" "Y" nil nil nil nil "X" nil nil)
+    ; TODO: Dropping Extension A for now to make HanaMinA buildable
+    ; (apparently it contains too many glyphs now because of additions to
+    ; glyphwiki?). Still need to properly rebalance blocks.
+    ("CJK Unified Ideographs Extension A" nil nil nil nil nil "X" nil nil)
     ("Yijing Hexagram Symbols" "Y" nil nil nil nil "X" nil nil)
     ("CJK Unified Ideographs" "Y" nil nil nil "X" nil nil nil)
     ("Cyrillic Extended-B" "Y" nil nil nil nil "X" nil nil)

@@ -1,12 +1,5 @@
-var command=environment["sun.java.command"];
-var match=command.match(/ (.+)\/makesvg/);
-var dir;
-if (match) {
-    dir = match[1];
-} else {
-    dir = ".";
-}
-print ("loading libraries from `"+dir+"/kage-engine' ...");
+var dir = ".."
+
 load(dir+"/kage-engine/2d.js");
 load(dir+"/kage-engine/buhin.js");
 load(dir+"/kage-engine/curve.js");

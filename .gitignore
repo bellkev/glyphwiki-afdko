@@ -7,3 +7,7 @@ GlyphWiki-UTF*
 HalfWidthGlyphs.txt
 Blocks.txt
 gw-list.wiki
+HalfwidthGlyphs-BMP.txt
+HalfwidthGlyphs-SMP.txt
+HalfwidthGlyphs-nonUCS.txt
+NonSpacingGlyphs-Halfwidth.txt
