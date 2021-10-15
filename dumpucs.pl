@@ -190,8 +190,14 @@ sub get_strokes_data{
                 }
             }
             foreach(split(/\$/, $sub)){
+		# Support types like 101, 107, etc.
+		# According to kage-engine code,
+		# the hundreds place does not seem significant.
+		# Perhaps it used to be significant but is now obsolete...
+		$_ =~ /^(\d+):/;
+		my $mod_type = $1 % 100;
                 # 0を捨てる
-                if($_ =~ m/^1:/){
+                if($mod_type == 1){
                     my ($ntype, $sa, $sa2, $nx1, $ny1, $nx2, $ny2) = split(/:/, $_);
                     if ($sx != 0 || $sy != 0) {
                         $nx1 = stretch($sx,$sx2,$nx1,$minX,$maxX);
@@ -205,7 +211,7 @@ sub get_strokes_data{
                                     int($y1 + $ny1  * ($y2 - $y1) / 200),
                                     int($x1 + $nx2  * ($x2 - $x1) / 200),
                                     int($y1 + $ny2  * ($y2 - $y1) / 200))));
-                } elsif($_ =~ m/^(2|3):/){
+                } elsif($mod_type == 2 or $mod_type == 3){
                     my ($ntype, $sa, $sa2, $nx1, $ny1, $nx2, $ny2, $nx3, $ny3) = split(/:/, $_);
                     if ($sx != 0 || $sy != 0) {
                         $nx1 = stretch($sx,$sx2,$nx1,$minX,$maxX);
@@ -223,7 +229,7 @@ sub get_strokes_data{
                                     int($y1 + $ny2  * ($y2 - $y1) / 200),
                                     int($x1 + $nx3  * ($x2 - $x1) / 200),
                                     int($y1 + $ny3  * ($y2 - $y1) / 200))));
-                } elsif($_ =~ m/^(4|6|7):/){
+                } elsif($mod_type == 4 or $mod_type == 6 or $mod_type == 7){
                     my ($ntype, $sa, $sa2, $nx1, $ny1, $nx2, $ny2, $nx3, $ny3, $nx4, $ny4) = split(/:/, $_);
                     if ($sx != 0 || $sy != 0) {
                         $nx1 = stretch($sx,$sx2,$nx1,$minX,$maxX);
